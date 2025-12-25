@@ -1,5 +1,6 @@
 import { deleteDoc, doc } from "firebase/firestore";
 import { db } from "../lib/firebase";
+import { toast } from "react-toastify";
 
 interface DeleteModelProps {
   selectedBlogId: string | null;
@@ -13,6 +14,7 @@ const DeleteModel = ({ selectedBlogId, onClose }: DeleteModelProps) => {
     try {
       await deleteDoc(doc(db, "blogs", selectedBlogId));
       onClose();
+      toast.success("Blog deleted successfully");
       window.location.reload(); // simple & safe
     } catch (error) {
       console.error("Delete failed:", error);

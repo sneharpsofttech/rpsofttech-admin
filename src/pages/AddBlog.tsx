@@ -298,7 +298,7 @@ const AddBlog = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-black text-white py-2 rounded bg-primary text-primary-foreground hover:bg-primary/90"
+            className="w-full bg-black text-white py-2 rounded bg-primary text-primary-foreground hover:bg-primary/90 cursor-pointer"
           >
             {loading ? "Saving..." : "Add Blog"}
           </button>

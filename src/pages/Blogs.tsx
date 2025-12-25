@@ -64,39 +64,40 @@ const Blog = () => {
               {blogs.map((blog) => (
                 <div
                   key={blog.id}
-                  className="bg-white hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 group overflow-hidden rounded-lg border bg-card text-card-foreground shadow-sm"
+                  className="flex flex-col justify-between bg-white hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 group overflow-hidden rounded-lg border bg-card text-card-foreground shadow-sm"
                 >
-                  <div className="relative overflow-hidden">
-                    <img
-                      src={
-                        blog.banner ||
-                        "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=400&fit=crop"
-                      }
-                      alt={blog.title}
-                      className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                    <div className="absolute top-4 left-4">
-                      <div className="bg-blue-600 hover:bg-blue-700 transition-colors duration-300 inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2">
-                        {blog.category ||
-                          (Array.isArray(blog.tags) && blog.tags.length > 0
-                            ? blog.tags[0]
-                            : "Blog")}
+                  <div>
+                    <div className="relative overflow-hidden">
+                      <img
+                        src={
+                          blog.banner ||
+                          "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=400&fit=crop"
+                        }
+                        alt={blog.title}
+                        className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                      <div className="absolute top-4 left-4">
+                        <div className="bg-blue-600 hover:bg-blue-700 transition-colors duration-300 inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2">
+                          {blog.category ||
+                            (Array.isArray(blog.tags) && blog.tags.length > 0
+                              ? blog.tags[0]
+                              : "Blog")}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="pb-4 flex flex-col space-y-1.5 p-6">
+                      <h3 className="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors duration-300 line-clamp-2">
+                        {blog.title}
+                      </h3>
+                      <div className="text-gray-600 group-hover:text-gray-800 transition-colors duration-300 line-clamp-3 text-sm text-muted-foreground">
+                        {blog.description
+                          ? blog.description.slice(0, 120) +
+                            (blog.description.length > 120 ? "..." : "")
+                          : ""}
                       </div>
                     </div>
                   </div>
-
-                  <div className="pb-4 flex flex-col space-y-1.5 p-6">
-                    <h3 className="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors duration-300 line-clamp-2">
-                      {blog.title}
-                    </h3>
-                    <div className="text-gray-600 group-hover:text-gray-800 transition-colors duration-300 line-clamp-3 text-sm text-muted-foreground">
-                      {blog.description
-                        ? blog.description.slice(0, 120) +
-                          (blog.description.length > 120 ? "..." : "")
-                        : ""}
-                    </div>
-                  </div>
-
                   <div className="pt-0 p-6 pt-0">
                     <div className="flex flex-wrap items-center justify-between text-sm text-gray-500 mb-4 gap-2">
                       <div className="flex items-center space-x-6">
@@ -135,12 +136,13 @@ const Blog = () => {
                       ) : null}
                     </div>
                     <div className="flex justify-between gap-2">
-                      <Link to={`/blog/${blog.id}`}
+                      <Link
+                        to={`/blog/${blog.id}`}
                         // onClick={() => {
                         //   setDeleteModel(true);
                         //   setSelectBlogId(blog.id);
                         // }}
-                        style={{backgroundColor: "#3b82f6"}}
+                        style={{ backgroundColor: "#3b82f6" }}
                         className="w-full flex items-center justify-center  text-white py-2 px-4 rounded-md hover:bg-blue-600 transition-colors duration-300 group-hover:bg-blue-600 justify-center"
                       >
                         <span>Edit Blog</span>
@@ -150,7 +152,7 @@ const Blog = () => {
                           setDeleteModel(true);
                           setSelectBlogId(blog.id);
                         }}
-                        style={{backgroundColor: "#ef4444"}}
+                        style={{ backgroundColor: "#ef4444" }}
                         className="w-full flex items-center justify-center bg-red text-white py-2 px-4 cursor-pointer rounded-md hover:bg-blue-600 transition-colors duration-300 group-hover:bg-blue-600 justify-center"
                       >
                         <span>Delete Blog</span>
